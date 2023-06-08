@@ -1,0 +1,28 @@
+server:
+  port: 7777
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+
+  server:
+    # Switch off self-preservation. Will turn lease expiration on and evict all instances which no longer sent a heartbeat and whose lease has expired.
+    # Self-preservation is desirable for Eureka clusters and where network outages (e.g. between data centers) could be possible.
+    # Note: the lease validity / expiration is configured in the Eureka _client_ instances (see eureka.instance.lease-expiration-duration-in-seconds).
+    enable-self-preservation: false
+
+
+#    # Make sure this is set to the same value as the lease renewal interval in Eureka _client_ instances (or slightly higher)
+#    # This value is relevant for Eureka's calculation of the 'current renewal threshold'.
+#    # Specifically, the following equation is used: current renewal threshold = (60s / expected-client-renewal-interval-seconds) * renewal-percent-threshold * current number of client instances.
+#    # In this case:
+#    # - for one registered client: 60 / 3 * 0.5 * 1 = 10.
+#    # - for two registered clients: 60 / 3 * 0,5 * 2 = 20.
+#    # As soon as two clients are connected:
+#    expected-client-renewal-interval-seconds:  60
+#
+#    # The interval in which the instance eviction task scans for instances with expired leases.
+#    # Given in milliseconds.
+#    eviction-interval-timer-in-ms:  30000
