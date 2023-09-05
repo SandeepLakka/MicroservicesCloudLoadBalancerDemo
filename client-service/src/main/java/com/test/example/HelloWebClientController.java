@@ -20,7 +20,7 @@ public class HelloWebClientController {
         String response = null;
         try {
             log.info("API-CALL : Calling /");
-            response = restTemplate.getForObject("http://icm-batch-idr-services/runIDR", String.class);
+            response = restTemplate.getForObject("http://api.example.com/resource", String.class);
             log.info("API-CALL : CALLED API : Response : {}", response);
 
         }catch (IllegalStateException ise){
